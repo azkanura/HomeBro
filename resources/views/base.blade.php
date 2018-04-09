@@ -169,14 +169,14 @@
       <div class="site-menubar-body">
         <ul class="site-menu" data-plugin="menu">
           @if(Auth::user()->role=='admin')
-          <li class="site-menu-item">
+          <li class="site-menu-item {{(Request::is('users') ? 'active':'' )}}">
             <a href="{{url('/users')}}">
                 <i class="site-menu-icon wb-users" aria-hidden="true"></i>
                 <span class="site-menu-title">Users</span>
             </a>
           </li>
           @endif
-          <li class="site-menu-item has-sub">
+          <li class="site-menu-item has-sub {{(Request::is('kitapay/*') ? 'active':'' )}}">
             <a href="javascript:void(0)">
                 <i class="site-menu-icon wb-payment" aria-hidden="true"></i>
                 <span class="site-menu-title">KitaPay</span>
