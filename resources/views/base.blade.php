@@ -165,27 +165,14 @@
     </nav>    <div class="site-menubar site-menubar-light">
       <div class="site-menubar-body">
         <ul class="site-menu" data-plugin="menu">
-          <li class="site-menu-item has-sub">
-            <a href="javascript:void(0)">
-                    <i class="site-menu-icon wb-users" aria-hidden="true"></i>
-                    <span class="site-menu-title">Users</span>
-                        <!-- <div class="site-menu-badge">
-                            <span class="badge badge-pill badge-success">3</span>
-                        </div> -->
-                </a>
-            <ul class="site-menu-sub">
-              <li class="site-menu-item">
-                <a class="animsition-link" href="../index.html">
-                  <span class="site-menu-title">All Users</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="../dashboard/v2.html">
-                  <span class="site-menu-title">Add User</span>
-                </a>
-              </li>
-            </ul>
+          @if(Auth::user()->role=='admin')
+          <li class="site-menu-item">
+            <a href="{{url('/users')}}">
+                <i class="site-menu-icon wb-users" aria-hidden="true"></i>
+                <span class="site-menu-title">Users</span>
+            </a>
           </li>
+          @endif
           <li class="site-menu-item has-sub">
             <a href="javascript:void(0)">
                 <i class="site-menu-icon wb-payment" aria-hidden="true"></i>
@@ -314,7 +301,7 @@
                 <span class="site-menu-title">KitaTransfer</span>
             </a>
           </li>
-
+          @if(!(Auth::user()->role=='customer_service'))
           <li class="site-menu-item has-sub">
             <a href="javascript:void(0)">
                     <i class="site-menu-icon wb-graph-up" aria-hidden="true"></i>
@@ -348,7 +335,7 @@
               </li>
             </ul>
           </li>
-
+          @endif
         </ul>
       </div>
     </div>
