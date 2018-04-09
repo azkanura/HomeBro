@@ -17,7 +17,7 @@
 <div class="panel">
   <div class="panel-body">
     @csrf
-    <table class="table table-bordered table-hover table-striped" cellspacing="0">
+    <table class="table table-bordered table-hover table-striped" cellspacing="0"  id="exampleAddRow">
       <thead>
         <tr>
           <th>Name</th>
@@ -73,5 +73,5 @@
 <script src="{{asset('vendor/bootbox/bootbox.js')}}"></script>
 <script src="{{asset('js/Plugin/datatables.js')}}"></script>
 
-<!-- <script src="{{asset('examples/js/tables/datatable.js')}}"></script> -->
+<script src="{{asset('examples/js/tables/datatable.js')}}"></script>
 @endsection

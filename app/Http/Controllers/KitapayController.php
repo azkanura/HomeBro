@@ -33,38 +33,25 @@ class KitapayController extends Controller {
     $data = json_decode($res->getBody()->read(1024));
     $status = $data->status;
     $user = $data->user;
-    dd($user);
+    // dd($user);
     return view('kitapay.user',['user'=>$user,'status'=>$status]);
   }
 
-  public function save(Request $request){
-    $name = $request->input('name');
-    $email = $request->input('email');
-    $role = $request->input('role');
-    $id = (int)$request->input('id');
-    if($id){
-      $user = User::findOrFail($id);
-      $user->name=$name;
-      $user->email=$email;
-      $user->role=$role;
-      $user->image='';
-      $user->save();
-    }
-    else{
-      $user = new User;
-      $user->name=$name;
-      $user->email=$email;
-      $user->role=$role;
-      $user->image='';
-      $user->password = Hash::make('password123');
-      $user->save();
-    }
-    return back()->with('message','Operation Successful !');
+  public function disableTransaction($id){
+    $url = BASE_URL.'/user/'.$id.'/disable-transaction?key='.API_KEY;
+    $client = new Client();
+    $res = $client->request('POST', $url);
+    // $data = json_decode($res->getBody()->read(1024));
+    // $status = $data->status;
+    return back();
   }
 
-  public function delete($id){
-    $user = User::findOrFail($id);
-    $user->delete();
-    return back()->with('message','Delete Successful !');
+  public function enableTransaction($id){
+    $url = BASE_URL.'/user/'.$id.'/enable-transaction?key='.API_KEY;
+    $client = new Client();
+    $res = $client->request('POST', $url);
+    // $data = json_decode($res->getBody()->read(1024));
+    // $status = $data->status;
+    return back();
   }
 }
