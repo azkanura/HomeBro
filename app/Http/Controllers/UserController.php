@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Hash;
+use Auth;
 
 class UserController extends Controller {
   public function index(){
@@ -48,5 +49,10 @@ class UserController extends Controller {
     $user = User::findOrFail($id);
     $user->delete();
     return back()->with('message','Delete Successful !');
+  }
+
+  public function profile(){
+    $user=Auth::user();
+    return view('profile',['user'=>$user]);
   }
 }
