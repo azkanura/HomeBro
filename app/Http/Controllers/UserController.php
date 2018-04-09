@@ -42,17 +42,48 @@ class UserController extends Controller {
       $user->password = Hash::make('password123');
       $user->save();
     }
-    return back()->with('message','Operation Successful !');
+    return back()->with('success-message','Create/Edit User Successful !');
   }
 
   public function delete($id){
     $user = User::findOrFail($id);
     $user->delete();
-    return back()->with('message','Delete Successful !');
+    return back()->with('success-message','Delete Successful !');
   }
 
   public function profile(){
     $user=Auth::user();
     return view('profile',['user'=>$user]);
+  }
+
+  public function editProfile(Request $request){
+    $id=(int)$request->input('id');
+    $name=$request->input('name');
+    $email=$request->input('email');
+    $user = User::findOrFail($id);
+    $user->name=$name;
+    $user->email=$email;
+    $user->save();
+    return redirect()->route('profile')->with('success-message','Edit Profile Successful !');
+  }
+
+  public function changePassword(Request $request){
+    $id=(int)$request->input('id');
+    $oldPassword=$request->input('old_password');
+    $newPassword=$request->input('new_password');
+    $user = User::findOrFail($id);
+    if(Hash::check($oldPassword,$user->password)){
+      if($newPassword){
+        $user->password=Hash::make($newPassword);
+        $user->save();
+        return redirect()->route('profile')->with('success-message','Change password successful');
+      }
+      else{
+        return redirect()->route('profile')->with('error-message','Change password failed. You have not input the new password !');
+      }
+    }
+    else{
+      return redirect()->route('profile')->with('error-message','Change password failed. You have input the wrong password !');
+    }
   }
 }

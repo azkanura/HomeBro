@@ -7,9 +7,12 @@
     <li class="breadcrumb-item active">Profile</li>
   </ol>
   <div class="page-header-actions">
-    <a class="btn btn-success" href="{{route('profile')}}">
+    <button class="btn btn-success" id='editProfileBtn'>
       <i class="icon fa fa-pencil" aria-hidden="true"></i> Edit Profile
-    </a>
+    </button>
+    <button class="btn btn-warning" id='changePasswordBtn'>
+      <i class="icon fa fa-lock" aria-hidden="true"></i> Change Password
+    </button>
   </div>
 </div>
 @endsection
@@ -38,22 +41,51 @@
       </div>
     </div>
     <div class="col-lg-8 col-xl-8">
-      <div class='panel panel-bordered'>
+      <div class='panel panel-bordered' id='editProfile' style='display:none'>
           <div class='panel-heading'>
             <h3 class='panel-title'>Edit Profile</h3>
           </div>
-          <div class='panel-body'>
-            <form autocomplete="off">
+          <div class='panel-body' style='padding-top:15px;padding-bottom:15px;'>
+            <form method="post" action="{{route('edit.profile')}}">
+              @csrf
+              <input type='hidden' name='id' value="{{$user->id}}">
               <div class="form-group">
-                <label class="form-control-label" for="inputBasicEmail">Name</label>
-                <input type="text" class="form-control" id="inputBasicEmail" name="inputEmail" placeholder="Email Address" autocomplete="off" value="{{$user->name}}">
+                <label class="form-control-label" for="name">Name</label>
+                <input type="text" class="form-control" id="inputName" name="name" placeholder="Input name here" autocomplete="off" value="{{$user->name}}" required>
               </div>
               <div class="form-group">
-                <label class="form-control-label" for="inputBasicPassword">Email</label>
-                <input type="email" class="form-control" id="inputBasicEmail" name="inputEmail" placeholder="Email Address" autocomplete="off" value="{{$user->email}}">
+                <label class="form-control-label" for="email">Email</label>
+                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email Address" autocomplete="off" value="{{$user->email}}" required>
               </div>
               <div class="form-group">
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+      </div>
+
+      <div class='panel panel-bordered' id='changePassword' style='display:none'>
+          <div class='panel-heading'>
+            <h3 class='panel-title'>Change Password</h3>
+          </div>
+          <div class='panel-body' style='padding-top:15px;padding-bottom:15px;'>
+            <form method="post" action="{{route('change.password')}}" id='changePasswordForm'>
+              @csrf
+              <input type='hidden' name='id' value="{{$user->id}}">
+              <div class="form-group">
+                <label class="form-control-label" for="name">Old Password</label>
+                <input type="password" class="form-control" id="oldPassword" name="old_password" placeholder="Input old password here" required>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="name">New Password</label>
+                <input type="password" class="form-control" id="newPassword" name="new_password" placeholder="Input new password here" required>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="name">Confirm New Password</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirm_password" placeholder="Confirm new password here" required>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
               </div>
             </form>
           </div>
@@ -69,4 +101,36 @@
 @endsection
 @section('script')
 <script src="{{asset('examples/js/pages/profile-v2.js')}}"></script>
+<script>
+  $(function(){
+
+    $('#editProfileBtn').on('click',function(){
+      $(this).attr('disabled',true);
+      $('#editProfile').show();
+      $('#changePasswordBtn').attr('disabled',false);
+      $('#changePassword').hide();
+    });
+
+    $('#changePasswordBtn').on('click',function(){
+      $(this).attr('disabled',true);
+      $('#editProfile').hide();
+      $('#editProfileBtn').attr('disabled',false);
+      $('#changePassword').show();
+    });
+
+    var password = document.getElementById("newPassword"), confirm_password = document.getElementById("confirmPassword");
+
+    function validatePassword(){
+      if(password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("The password you entered doesn't match");
+      } else {
+        confirm_password.setCustomValidity('');
+      }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+
+  });
+</script>
 @endsection

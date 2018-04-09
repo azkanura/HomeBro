@@ -62,6 +62,9 @@
       .site-menu>.site-menu-item>a{
         padding:8px;
       }
+      img{
+        object-fit: cover !important;
+      }
     </style>
   </head>
   <body class="page-user">
@@ -342,6 +345,20 @@
 
     <!-- Page -->
     <div class="page">
+      @if(Session::has('success-message'))
+      <div class="page-content" style='padding:30px 30px 0px 30px'>
+        <div class='alert alert-success'>
+          {{Session::get('success-message')}}
+        </div>
+      </div>
+      @endif
+      @if(Session::has('error-message'))
+      <div class="page-content" style='padding:30px 30px 0px 30px'>
+        <div class='alert alert-danger'>
+          {{Session::get('error-message')}}
+        </div>
+      </div>
+      @endif
       @yield('header')
       <div class="page-content">
            @yield('content')
@@ -360,6 +377,8 @@
     <!-- Core  -->
     <script src="{{asset('vendor/babel-external-helpers/babel-external-helpers.js')}}"></script>
     <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
+    <script src="{{asset('vendor/jquery/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('vendor/slick-carousel/slick.min.js')}}"></script>
     <script src="{{asset('vendor/popper-js/umd/popper.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/bootstrap.js')}}"></script>
     <script src="{{asset('vendor/animsition/animsition.js')}}"></script>

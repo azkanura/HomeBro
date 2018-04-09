@@ -15,6 +15,10 @@ Route::get('/login', 'Auth\LoginController@index');
 Route::get('/users', 'UserController@index')->name('users')->middleware('auth');
 Route::get('/profile', 'UserController@profile')->name('profile')->middleware('auth');
 
+Route::post('edit-profile','UserController@editProfile')->name('edit.profile')->middleware('auth');
+
+Route::post('change-password','UserController@changePassword')->name('change.password')->middleware('auth');
+
 Route::post('user/save', 'UserController@save')->name('user.save')->middleware('auth');
 Route::get('user/delete/{id}', 'UserController@delete')->name('user.delete')->middleware('auth');
 

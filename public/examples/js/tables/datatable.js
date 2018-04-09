@@ -263,16 +263,16 @@
           if ($this.hasClass('actions')) {
             _self.rowSetActionsEditing($row);
           } else if($this.hasClass('select-role')) {
-            $this.html('<select class="form-control input-block" name="role"><option value="" disabled>Select User Role</option><option value="admin" '+(data[i]=='admin'?'selected':'')+' >Admin</option><option value="officer" '+(data[i]=='officer'?'selected':'')+' >Officer</option><option value="customer_service" '+(data[i]=='customer_service'?'selected':'')+' >Customer Service</option></select>');
+            $this.html('<select class="form-control input-block" name="role" required><option value="" disabled>Select User Role</option><option value="admin" '+(data[i]=='admin'?'selected':'')+' >Admin</option><option value="officer" '+(data[i]=='officer'?'selected':'')+' >Officer</option><option value="customer_service" '+(data[i]=='customer_service'?'selected':'')+' >Customer Service</option></select>');
           }
           else if($this.hasClass('id')) {
             $this.html('<input type="text" class="form-control input-block" value="' + data[i] + '" name="id"/>');
           }
           else if($this.hasClass('name')) {
-            $this.html('<input type="text" class="form-control input-block" value="' + data[i] + '" name="name"/>');
+            $this.html('<input type="text" class="form-control input-block" value="' + data[i] + '" name="name" required/>');
           }
           else if($this.hasClass('email')) {
-            $this.html('<input type="text" class="form-control input-block" value="' + data[i] + '" name="email"/>');
+            $this.html('<input type="text" class="form-control input-block" value="' + data[i] + '" name="email" required/>');
           }
           else {
             $this.html('<input type="text" class="form-control input-block" value="' + data[i] + '" />');
