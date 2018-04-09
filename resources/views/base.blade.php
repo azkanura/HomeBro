@@ -127,18 +127,22 @@
             <li class="nav-item dropdown">
               <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false"
                 data-animation="scale-up" role="button">
+                <span style='font-size:20px;font-weight:100;padding-right:10px'>{{ Auth::user()->name }}</span>
                 <span class="avatar avatar-online">
-                  <img src="{{asset('portraits/5.jpg')}}" alt="...">
+                  <img src="{{asset('portraits/account.png')}}" alt="...">
                   <i></i>
                 </span>
               </a>
               <div class="dropdown-menu" role="menu">
                 <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Profile</a>
                 <div class="dropdown-divider" role="presentation"></div>
-                <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
+                <a class="dropdown-item" href="{{route('logout')}}" role="menuitem" onclick="event.preventDefault();                   document.getElementById('logout-form').submit();"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
               </div>
             </li>
           </ul>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
           <!-- End Navbar Toolbar Right -->
         </div>
         <!-- End Navbar Collapse -->

@@ -40,7 +40,7 @@ class KitapayController extends Controller {
   public function disableTransaction($id){
     $url = BASE_URL.'/user/'.$id.'/disable-transaction?key='.API_KEY;
     $client = new Client();
-    $res = $client->request('POST', $url);
+    $res = $client->request('POST', $url,['body'=>null]);
     // $data = json_decode($res->getBody()->read(1024));
     // $status = $data->status;
     return back();
@@ -49,7 +49,7 @@ class KitapayController extends Controller {
   public function enableTransaction($id){
     $url = BASE_URL.'/user/'.$id.'/enable-transaction?key='.API_KEY;
     $client = new Client();
-    $res = $client->request('POST', $url);
+    $res = $client->request('POST', $url,['body'=>null]);
     // $data = json_decode($res->getBody()->read(1024));
     // $status = $data->status;
     return back();

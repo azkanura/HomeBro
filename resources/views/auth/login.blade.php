@@ -81,27 +81,38 @@
           <h3 class="font-size-24">Sign In</h3>
           <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
 
-          <form method="post" action="login-v2.html">
+          <form method="POST" action="{{route('login')}}">
+            @csrf
             <div class="form-group">
               <label class="sr-only" for="inputEmail">Email</label>
-              <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
+              <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="inputEmail" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
+              @if ($errors->has('email'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+              @endif
             </div>
             <div class="form-group">
               <label class="sr-only" for="inputPassword">Password</label>
-              <input type="password" class="form-control" id="inputPassword" name="password"
+              <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="inputPassword" name="password" required
                 placeholder="Password">
+                @if ($errors->has('password'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
             </div>
             <div class="form-group clearfix">
               <div class="checkbox-custom checkbox-inline checkbox-primary float-left">
-                <input type="checkbox" id="rememberMe" name="rememberMe">
+                <input type="checkbox" id="rememberMe" name="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label for="rememberMe">Remember me</label>
               </div>
-              <a class="float-right" href="forgot-password.html">Forgot password?</a>
+              <a class="float-right" href="{{ route('password.request') }}">Forgot password?</a>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Sign in</button>
           </form>
 
-          <p>No account? <a href="register-v2.html">Sign Up</a></p>
+          <p>No account? <a href="{{ route('register') }}">Sign Up</a></p>
         </div>
 
       </div>
