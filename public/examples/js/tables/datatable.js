@@ -128,7 +128,7 @@
 
       build: function build() {
         this.datatable = this.$table.DataTable({
-          aoColumns: [null, null, null, {
+          aoColumns: [null, null, null, null, {
             "bSortable": false
           }],
           language: {
@@ -162,6 +162,7 @@
           e.preventDefault();
 
           var $row = $$$1(this).closest('tr');
+          var id = parseInt($row.attr('id'));
           bootbox.dialog({
             message: "Are you sure that you want to delete this user?",
             title: "Delete Confirmation",
@@ -170,6 +171,7 @@
                 label: "Confirm",
                 className: "btn-danger",
                 callback: function callback() {
+                  window.location.href='/user/delete/'+id;
                   _self.rowRemove($row);
                 }
               },
@@ -206,13 +208,16 @@
 
         var actions, data, $row;
 
-        actions = ['<a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-editing save-row" data-toggle="tooltip" data-original-title="Save" hidden><i class="icon wb-check" aria-hidden="true"></i></a>', '<a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-editing cancel-row" data-toggle="tooltip" data-original-title="Delete" hidden><i class="icon wb-close" aria-hidden="true"></i></a>', '<a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row" data-toggle="tooltip" data-original-title="Edit"><i class="icon wb-edit" aria-hidden="true"></i></a>', '<a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row" data-toggle="tooltip" data-original-title="Remove"><i class="icon wb-trash" aria-hidden="true"></i></a>'].join(' ');
+        actions = ['<button type="submit" formaction="/user/save" class="btn btn-sm btn-icon btn-pure btn-default on-editing save-row" data-toggle="tooltip" data-original-title="Save" hidden><i class="icon wb-check" aria-hidden="true"></i></button>', '<a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-editing cancel-row" data-toggle="tooltip" data-original-title="Delete" hidden><i class="icon wb-close" aria-hidden="true"></i></a>', '<a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row" data-toggle="tooltip" data-original-title="Edit"><i class="icon wb-edit" aria-hidden="true"></i></a>', '<a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row" data-toggle="tooltip" data-original-title="Remove"><i class="icon wb-trash" aria-hidden="true"></i></a>'].join(' ');
 
-        data = this.datatable.row.add(['', '', '', actions]);
+        data = this.datatable.row.add(['','', '', '', actions]);
         $row = this.datatable.row(data[0]).nodes().to$();
 
         $row.addClass('adding').find('td:last').addClass('actions');
-        $row.find('td:nth-last-child(2)').addClass('select-role')
+        $row.find('td:nth-last-child(2)').addClass('select-role');
+        $row.find('td:nth-child(1)').addClass('id').css({visibility:'hidden',position:'absolute'});
+        $row.find('td:nth-child(2)').addClass('name');
+        $row.find('td:nth-child(3)').addClass('email');
 
         this.rowEdit($row);
 
@@ -259,6 +264,9 @@
             _self.rowSetActionsEditing($row);
           } else if($this.hasClass('select-role')) {
             $this.html('<select class="form-control input-block" name="role"><option value="" disabled>Select User Role</option><option value="admin" '+(data[i]=='admin'?'selected':'')+' >Admin</option><option value="officer" '+(data[i]=='officer'?'selected':'')+' >Officer</option><option value="customer_service" '+(data[i]=='customer_service'?'selected':'')+' >Customer Service</option></select>');
+          }
+          else if($this.hasClass('id')) {
+            $this.html('<input type="text" class="form-control input-block" value="' + data[i] + '" name="id"/>');
           }
           else if($this.hasClass('name')) {
             $this.html('<input type="text" class="form-control input-block" value="' + data[i] + '" name="name"/>');

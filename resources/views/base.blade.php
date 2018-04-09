@@ -184,12 +184,12 @@
           </li>
           <li class="site-menu-item has-sub">
             <a href="javascript:void(0)">
-                    <i class="site-menu-icon wb-payment" aria-hidden="true"></i>
-                    <span class="site-menu-title">KitaPay</span>
-                </a>
+                <i class="site-menu-icon wb-payment" aria-hidden="true"></i>
+                <span class="site-menu-title">KitaPay</span>
+            </a>
             <ul class="site-menu-sub">
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/menu-collapsed.html">
+                <a class="animsition-link" href="{{url('/kitapay/users')}}">
                   <span class="site-menu-title">Users</span>
                 </a>
               </li>

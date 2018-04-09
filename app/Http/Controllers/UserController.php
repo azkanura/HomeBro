@@ -23,7 +23,7 @@ class UserController extends Controller {
     $name = $request->input('name');
     $email = $request->input('email');
     $role = $request->input('role');
-    $id = $request->input('id');
+    $id = (int)$request->input('id');
     if($id){
       $user = User::findOrFail($id);
       $user->name=$name;
@@ -41,12 +41,12 @@ class UserController extends Controller {
       $user->password = Hash::make('password123');
       $user->save();
     }
-    return Redirect::back()->with('message','Operation Successful !');
+    return back()->with('message','Operation Successful !');
   }
 
   public function delete($id){
     $user = User::findOrFail($id);
     $user->delete();
-    return Redirect::back()->with('message','Delete Successful !');
+    return back()->with('message','Delete Successful !');
   }
 }

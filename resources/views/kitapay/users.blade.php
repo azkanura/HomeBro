@@ -1,57 +1,43 @@
 @extends('base')
 @section('header')
 <div class="page-header">
-  <h3 class="page-title">Users</h3>
+  <h3 class="page-title">KitaPay Users</h3>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-    <li class="breadcrumb-item active">Users</li>
+    <li class="breadcrumb-item active">KitaPay Users</li>
   </ol>
   <div class="page-header-actions">
-    <button id="addToTable" class="btn btn-outline btn-primary" type="button">
+    <!-- <button id="addToTable" class="btn btn-outline btn-primary" type="button">
       <i class="icon wb-plus" aria-hidden="true"></i> Add User
-    </button>
+    </button> -->
   </div>
 </div>
 @endsection
 @section('content')
 <div class="panel">
   <div class="panel-body">
-    <form method="POST">
     @csrf
-    <table class="table table-bordered table-hover table-striped" cellspacing="0" id="exampleAddRow">
+    <table class="table table-bordered table-hover table-striped" cellspacing="0">
       <thead>
         <tr>
-          <th style="visibility:hidden;position:absolute">Id</th>
           <th>Name</th>
-          <th>Email</th>
-          <th style="min-width:100px">Role</th>
+          <th>Phone</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         @foreach($users as $user)
-        <tr class="gradeA" id={{$user->id}}>
-          <td class='id' style="visibility:hidden;position:absolute">
-            {{$user->id}}
-          </td>
-          <td class='name'>{{$user->name}}</td>
-          <td class='email'>{{$user->email}}</td>
-          <td class='select-role'>{{$user->role}}</td>
+        <tr class="gradeA">
+          <td class='name'>{{$user->first_name}} {{$user->last_name}}</td>
+          <td class='email'>{{$user->phone}}</td>
           <td class="actions">
-            <button type='submit' formaction={{url('user/save')}} class="btn btn-sm btn-icon btn-pure btn-default on-editing save-row"
-              data-toggle="tooltip" data-original-title="Save" hidden><i class="icon wb-check" aria-hidden="true"></i></button>
-            <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-editing cancel-row"
-              data-toggle="tooltip" data-original-title="Delete" hidden><i class="icon wb-close" aria-hidden="true"></i></a>
-            <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row"
-              data-toggle="tooltip" data-original-title="Edit"><i class="icon wb-edit" aria-hidden="true"></i></a>
-            <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row"
-              data-toggle="tooltip" data-original-title="Remove"><i class="icon wb-trash" aria-hidden="true"></i></a>
+            <a href="{{url('kitapay/user')}}/{{$user->uid}}" class="btn btn-sm btn-icon btn-success on-editing cancel-row"
+              data-toggle="tooltip" data-original-title="Delete"><i class="icon wb-eye" aria-hidden="true"></i>&nbsp;&nbsp;Detail</a>
           </td>
         </tr>
         @endforeach
       </tbody>
     </table>
-  </form>
   </div>
 </div>
 @endsection
@@ -87,5 +73,5 @@
 <script src="{{asset('vendor/bootbox/bootbox.js')}}"></script>
 <script src="{{asset('js/Plugin/datatables.js')}}"></script>
 
-<script src="{{asset('examples/js/tables/datatable.js')}}"></script>
+<!-- <script src="{{asset('examples/js/tables/datatable.js')}}"></script> -->
 @endsection

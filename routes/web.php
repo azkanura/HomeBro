@@ -13,4 +13,7 @@
 
 Route::get('/', 'UserController@index');
 Route::post('user/save', 'UserController@save');
-Route::post('user/delete/{id}', 'UserController@delete');
+Route::get('user/delete/{id}', 'UserController@delete');
+
+Route::get('/kitapay/users', 'KitapayController@displayUsers');
+Route::get('/kitapay/user/{id}', 'KitapayController@displayUser');
