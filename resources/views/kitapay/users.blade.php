@@ -17,7 +17,7 @@
 <div class="panel">
   <div class="panel-body">
     @csrf
-    <table class="table table-bordered table-hover table-striped" cellspacing="0"  id="exampleAddRow">
+    <table class="table table-bordered dataTable table-hover table-striped" cellspacing="0" data-plugin="dataTable">
       <thead>
         <tr>
           <th>Name</th>
@@ -31,8 +31,7 @@
           <td class='name'>{{$user->first_name}} {{$user->last_name}}</td>
           <td class='email'>{{$user->phone}}</td>
           <td class="actions">
-            <a href="{{url('kitapay/user')}}/{{$user->uid}}" class="btn btn-sm btn-icon btn-success on-editing cancel-row"
-              data-toggle="tooltip" data-original-title="Delete"><i class="icon wb-eye" aria-hidden="true"></i>&nbsp;&nbsp;Detail</a>
+            <a href="{{url('kitapay/user')}}/{{$user->uid}}" class="btn btn-sm btn-icon btn-success on-editing cancel-row"><i class="icon wb-eye" aria-hidden="true"></i>&nbsp;&nbsp;Detail</a>
           </td>
         </tr>
         @endforeach
