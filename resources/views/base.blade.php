@@ -86,6 +86,13 @@
       .dropify-errors-container>ul>li{
         list-style-type: none;
       }
+      .brand-link{
+        color:#FFFFFF;
+      }
+      .brand-link:hover{
+        color:#EEEEEE;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body class="page-user">
@@ -107,8 +114,10 @@
           <i class="icon wb-more-horizontal" aria-hidden="true"></i>
         </button>
         <div class="navbar-brand navbar-brand-center">
+          <a href="{{route('home')}}" class='brand-link'>
           <img class="navbar-brand-logo" src="{{asset('images/logo.png')}}" title="KitaPay">
           <span class="navbar-brand-text hidden-xs-down"> KitaPay</span>
+          </a>
         </div>
         <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-search"
           data-toggle="collapse">
@@ -370,15 +379,25 @@
 
     <!-- Page -->
     <div class="page">
+      @if(Hash::check('password123',Auth::user()->password))
+      <div class="page-content" style='padding:10px 30px 0px 30px'>
+        <div class='alert alert-danger'>
+          Your password has not been changed since the first time you logged in. <br>It is important to immediately change the default password to a more secure password to avoid criminal abuse.
+          @if(!Request::is('profile'))
+          <a href="{{route('profile')}}">Change Password Here</a>
+          @endif
+        </div>
+      </div>
+      @endif
       @if(Session::has('success-message'))
-      <div class="page-content" style='padding:30px 30px 0px 30px'>
+      <div class="page-content" style='padding:10px 30px 0px 30px'>
         <div class='alert alert-success'>
           {{Session::get('success-message')}}
         </div>
       </div>
       @endif
       @if(Session::has('error-message'))
-      <div class="page-content" style='padding:30px 30px 0px 30px'>
+      <div class="page-content" style='padding:10px 30px 0px 30px'>
         <div class='alert alert-danger'>
           {{Session::get('error-message')}}
         </div>
