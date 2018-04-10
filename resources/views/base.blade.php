@@ -65,6 +65,27 @@
       img{
         object-fit: cover !important;
       }
+      .avatar img{
+        height:100%;
+      }
+      .navbar-avatar .avatar{
+        width: 2.143rem;
+        height: 2.143rem;
+      }
+      .avatar-100{
+        width:100px;
+        height:100px;
+      }
+
+      .dropify-errors-container{
+        margin-top:3.25em;
+      }
+      .dropify-errors-container>ul{
+        padding: 0;
+      }
+      .dropify-errors-container>ul>li{
+        list-style-type: none;
+      }
     </style>
   </head>
   <body class="page-user">
@@ -132,7 +153,11 @@
                 data-animation="scale-up" role="button">
                 <span style='font-size:20px;font-weight:100;padding-right:10px'>{{ Auth::user()->name }}</span>
                 <span class="avatar avatar-online">
+                  @if(Auth::user()->image)
+                  <img src="{{asset('storage')}}/{{Auth::user()->image}}" alt="...">
+                  @else
                   <img src="{{asset('portraits/account.png')}}" alt="...">
+                  @endif
                   <i></i>
                 </span>
               </a>

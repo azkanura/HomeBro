@@ -23,7 +23,7 @@
         <div class="user-base card-block">
           <a class="avatar img-bordered avatar-100" href="javascript:void(0)">
             @if(isset($user->image) AND $user->image)
-              <img src="{{$user->image}}" alt="...">
+              <img src="{{asset('storage')}}/{{$user->image}}" alt="...">
             @else
               <img src="{{asset('portraits/account.png')}}" alt="...">
             @endif
@@ -46,7 +46,7 @@
             <h3 class='panel-title'>Edit Profile</h3>
           </div>
           <div class='panel-body' style='padding-top:15px;padding-bottom:15px;'>
-            <form method="post" action="{{route('edit.profile')}}">
+            <form method="post" action="{{route('edit.profile')}}" enctype="multipart/form-data">
               @csrf
               <input type='hidden' name='id' value="{{$user->id}}">
               <div class="form-group">
@@ -56,6 +56,10 @@
               <div class="form-group">
                 <label class="form-control-label" for="email">Email</label>
                 <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email Address" autocomplete="off" value="{{$user->email}}" required>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="email">Profile Image</label>
+                <input type="file" name="image" id="input-file-now-custom-1" data-plugin="dropify" data-default-file="{{$user->image ? asset('storage').'/'.$user->image : ''}}" data-allowed-file-extensions="png jpg jpeg" data-max-file-size="1M">
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -98,8 +102,15 @@
 <link rel="stylesheet" href="{{asset('examples/css/pages/profile-v2.css')}}">
 <!-- Fonts -->
 <link rel="stylesheet" href="{{asset('fonts/font-awesome/font-awesome.css')}}">
+
+<link rel="stylesheet" href="{{asset('vendor/blueimp-file-upload/jquery.fileupload.css')}}">
+<link rel="stylesheet" href="{{asset('vendor/dropify/dropify.css')}}">
+
 @endsection
 @section('script')
+<script src="{{asset('examples/js/forms/uploads.js')}}"></script>
+<script src="{{asset('vendor/dropify/dropify.min.js')}}"></script>
+<script src="{{asset('js/Plugin/dropify.js')}}"></script>
 <script src="{{asset('examples/js/pages/profile-v2.js')}}"></script>
 <script>
   $(function(){
@@ -117,6 +128,21 @@
       $('#editProfileBtn').attr('disabled',false);
       $('#changePassword').show();
     });
+
+    // $('input[type="file"]').on('change',function(){
+    //     var ext=$(this).val().split('.');
+    //     ext=ext[ext.length-1].toLowerCase();
+    //     if(ext!='png' && ext!='jpg' && ext!='jpeg'){
+    //         alert('You can only upload image file ( .jpg, .png, and .jpeg extension ) !');
+    //         $(this).val('');
+    //     }
+    //     var maxSize = 1096880;
+    //     var fileSize = this.files[0].size;
+    //     if(fileSize>maxSize){
+    //         alert('You cannot upload image with size more than 1 MB!');
+    //         $(this).val('');
+    //     }
+    // });
 
     var password = document.getElementById("newPassword"), confirm_password = document.getElementById("confirmPassword");
 

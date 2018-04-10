@@ -63,6 +63,18 @@ class UserController extends Controller {
     $user = User::findOrFail($id);
     $user->name=$name;
     $user->email=$email;
+    if($request->hasFile('image') && $request->file('image')->isValid()){
+      $image=$request->file('image');
+      $filename=$user->id.'_'.$user->name;
+      $path=$image->storeAs('public/profpic',$filename.'.jpg');
+      if($path){
+        $filePath='profpic/'.$filename.'.jpg';
+        $user->image=$filePath;
+      }
+    }
+    else{
+      dd('tidak ada gambar');
+    }
     $user->save();
     return redirect()->route('profile')->with('success-message','Edit Profile Successful !');
   }
