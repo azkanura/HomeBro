@@ -77,9 +77,6 @@ class UserController extends Controller {
         $user->image=$filePath;
       }
     }
-    else{
-      dd('tidak ada gambar');
-    }
     $user->save();
     return redirect()->route('profile')->with('success-message','Edit Profile Successful !');
   }
