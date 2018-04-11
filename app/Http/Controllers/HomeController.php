@@ -27,7 +27,7 @@ class HomeController extends Controller
           return redirect()->route('users');
         }
         else{
-          return redirect()->route('kitapay.users');
+          return redirect()->route('kitapay.users',['page'=>1]);
         }
     }
 }

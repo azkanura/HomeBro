@@ -17,7 +17,12 @@ class UserController extends Controller {
     // $user->password= Hash::make('password123');
     // $user->image='';
     // $user->save();
-    return view('index',['users'=>User::all()]);
+    if(Auth::user()->role=='admin'){
+      return view('index',['users'=>User::all()]);
+    }
+    else{
+      return redirect()->route('kitapay.users',['page'=>1]);
+    }
   }
 
   public function save(Request $request){

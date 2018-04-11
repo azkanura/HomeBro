@@ -1,10 +1,11 @@
 @extends('base')
 @section('header')
 <div class="page-header">
-  <h3 class="page-title">KitaPay Users</h3>
+  <h3 class="page-title">User Search Result</h3>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-    <li class="breadcrumb-item active">KitaPay Users</li>
+    <li class="breadcrumb-item"><a href="{{url('/kitapay/users/1')}}">KitaPay Users</a></li>
+    <li class="breadcrumb-item active">Search Result : {{$query}}</li>
   </ol>
   <div class="page-header-actions">
     <form method='POST' action="{{route('kitapay.search.user')}}">
@@ -18,32 +19,8 @@
 </div>
 @endsection
 @section('content')
-<!-- <div class="panel">
-  <div class="panel-body">
-    <table class="table table-bordered dataTable table-hover table-striped" cellspacing="0" data-plugin="dataTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($users as $user)
-        <tr class="gradeA">
-          <td class='name'>{{$user->first_name}} {{$user->last_name}}</td>
-          <td class='phone'>{{$user->phone}} <span style='display:none'>{{str_replace('+62','0',$user->phone)}}</span></td>
-          <td class="actions">
-            <a href="{{url('kitapay/user')}}/{{$user->uid}}" class="btn btn-sm btn-icon btn-success on-editing cancel-row"><i class="icon wb-eye" aria-hidden="true"></i>&nbsp;&nbsp;Detail</a>
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
-</div> -->
 <div class="row">
-  @foreach($users as $user)
+
   <div class='col-md-3'>
     <div class="card">
       <div class="card-block">
@@ -53,26 +30,7 @@
       </div>
     </div>
   </div>
-  @endforeach
-</div>
-<div class='row'>
-  <div class='col-md-12'>
-    <nav>
-      <ul class="pagination pagination-gap">
-        <li class="{{$page==1||$page=='1'?'disabled':''}} page-item">
-          <a class="page-link" href="{{route('kitapay.users',['page'=>(int)$page-1])}}" aria-label="Previous">
-            <span aria-hidden="true">«</span>
-          </a>
-        </li>
-        <li class="active page-item"><span class="page-link">{{$page}} <span class="sr-only">(current)</span></span></li>
-        <li class="{{count($users)<(int)$size?'disabled':''}} page-item">
-          <a class="page-link" href="{{route('kitapay.users',['page'=>(int)$page+1])}}" aria-label="Next">
-            <span aria-hidden="true">»</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+
 </div>
 @endsection
 @section('style')

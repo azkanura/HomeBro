@@ -217,7 +217,7 @@
             </a>
             <ul class="site-menu-sub">
               <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/kitapay/users')}}">
+                <a class="animsition-link" href="{{url('/kitapay/users/1')}}">
                   <span class="site-menu-title">Users</span>
                 </a>
               </li>

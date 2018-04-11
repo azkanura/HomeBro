@@ -67,15 +67,15 @@
       <div class="page-content">
         <div class="page-brand-info">
           <div class="brand">
-            <img class="brand-img" src="{{asset('images/logo.png')}}" alt="...">
-            <h2 class="brand-text font-size-40" style="text-transform:auto">KitaPay Admin Panel</h2>
+            <img class="brand-img" src="{{asset('images/logo.png')}}" alt="..." style='width:100px'>
+            <h2 class="brand-text font-size-40" style="text-transform:none !important">KitaPay Admin Panel</h2>
           </div>
           <p class="font-size-20">Welcome to KitaPay Admin Panel. <br>You have to sign in to access KitaPay Admin Panel.</p>
         </div>
 
         <div class="page-login-main animation-slide-right animation-duration-1">
           <div class="brand hidden-md-up">
-            <img class="brand-img" src="{{asset('images/logo.png')}}" alt="...">
+            <img class="brand-img" src="{{asset('images/logo.png')}}" alt="..." style='width:100px'>
             <h3 class="brand-text font-size-40">KitaPay</h3>
           </div>
           <h3 class="font-size-24">Sign In</h3>

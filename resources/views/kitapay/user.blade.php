@@ -4,7 +4,7 @@
   <h3 class="page-title">User Detail</h3>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{{url('/kitapay/users')}}">KitaPay Users</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/kitapay/users/1')}}">KitaPay Users</a></li>
     <li class="breadcrumb-item active">User Detail</li>
   </ol>
   <div class="page-header-actions">
@@ -41,7 +41,7 @@
             -
             @endif
           </p>
-          <p class="user-location">Aktif Sejak {{$user->register_date}}</p>
+          <p class="user-location">Aktif Sejak {{date('d M Y, H:i',$user->register_date)}}</p>
           @if(isset($user->transaction_enable) AND $user->transaction_enable)
           <span class='badge badge-rounded badge-outline badge-primary' style='text-transform:uppercase'>Transaction Enabled</span>
           @else

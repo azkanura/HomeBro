@@ -22,7 +22,9 @@ Route::post('change-password','UserController@changePassword')->name('change.pas
 Route::post('user/save', 'UserController@save')->name('user.save')->middleware('auth');
 Route::get('user/delete/{id}', 'UserController@delete')->name('user.delete')->middleware('auth');
 
-Route::get('/kitapay/users', 'KitapayController@displayUsers')->name('kitapay.users')->middleware('auth');
+Route::get('/kitapay/users/{page}', 'KitapayController@displayUsers')->name('kitapay.users')->middleware('auth');
+Route::post('/kitapay/search-user', 'KitapayController@searchUser')->name('kitapay.search.user')->middleware('auth');
+
 Route::get('/kitapay/user/{id}', 'KitapayController@displayUser')->name('kitapay.user')->middleware('auth');
 Route::get('/kitapay/user/disable-transaction/{id}', 'KitapayController@disableTransaction')->name('kitapay.disable.transaction')->middleware('auth');
 Route::get('/kitapay/user/enable-transaction/{id}','KitapayController@enableTransaction')->name('kitapay.enable.transaction')->middleware('auth');
