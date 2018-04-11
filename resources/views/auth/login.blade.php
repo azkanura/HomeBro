@@ -68,9 +68,9 @@
         <div class="page-brand-info">
           <div class="brand">
             <img class="brand-img" src="{{asset('images/logo.png')}}" alt="...">
-            <h2 class="brand-text font-size-40" style="text-transform:auto">KitaPay</h2>
+            <h2 class="brand-text font-size-40" style="text-transform:auto">KitaPay Admin Panel</h2>
           </div>
-          <p class="font-size-20">Login to access KitaPay Admin Panel features</p>
+          <p class="font-size-20">Welcome to KitaPay Admin Panel. <br>You have to sign in to access KitaPay Admin Panel.</p>
         </div>
 
         <div class="page-login-main animation-slide-right animation-duration-1">
@@ -107,12 +107,12 @@
                 <input type="checkbox" id="rememberMe" name="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label for="rememberMe">Remember me</label>
               </div>
-              <a class="float-right" href="{{ route('password.request') }}">Forgot password?</a>
+              <!-- <a class="float-right" href="{{ route('password.request') }}">Forgot password?</a> -->
             </div>
             <button type="submit" class="btn btn-primary btn-block">Sign in</button>
           </form>
 
-          <p>No account? <a href="{{ route('register') }}">Sign Up</a></p>
+          <!-- <p>No account? <a href="{{ route('register') }}">Sign Up</a></p> -->
         </div>
 
       </div>

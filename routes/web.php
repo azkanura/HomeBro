@@ -25,7 +25,8 @@ Route::get('user/delete/{id}', 'UserController@delete')->name('user.delete')->mi
 Route::get('/kitapay/users', 'KitapayController@displayUsers')->name('kitapay.users')->middleware('auth');
 Route::get('/kitapay/user/{id}', 'KitapayController@displayUser')->name('kitapay.user')->middleware('auth');
 Route::get('/kitapay/user/disable-transaction/{id}', 'KitapayController@disableTransaction')->name('kitapay.disable.transaction')->middleware('auth');
-Route::get('/kitapay/user/enable-transaction/{id}', 'KitapayController@enableTransaction')->name('kitapay.enable.transaction')->middleware('auth');
+Route::get('/kitapay/user/enable-transaction/{id}','KitapayController@enableTransaction')->name('kitapay.enable.transaction')->middleware('auth');
+Route::post('/kitapay/user/update-kita-saldo-status','KitapayController@updateKitaSaldoStatus')->name('kitapay.update.status')->middleware('auth');
 
 Auth::routes();
 

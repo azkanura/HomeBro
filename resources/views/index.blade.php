@@ -30,24 +30,26 @@
       </thead>
       <tbody>
         @foreach($users as $user)
-        <tr class="gradeA" id={{$user->id}}>
-          <td class='id' style="visibility:hidden;position:absolute">
-            {{$user->id}}
-          </td>
-          <td class='name'>{{$user->name}}</td>
-          <td class='email'>{{$user->email}}</td>
-          <td class='select-role'>{{$user->role}}</td>
-          <td class="actions">
-            <button type='submit' formaction={{url('user/save')}} class="btn btn-sm btn-icon btn-pure btn-default on-editing save-row"
-              data-toggle="tooltip" data-original-title="Save" hidden><i class="icon wb-check" aria-hidden="true"></i></button>
-            <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-editing cancel-row"
-              data-toggle="tooltip" data-original-title="Delete" hidden><i class="icon wb-close" aria-hidden="true"></i></a>
-            <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row"
-              data-toggle="tooltip" data-original-title="Edit"><i class="icon wb-edit" aria-hidden="true"></i></a>
-            <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row"
-              data-toggle="tooltip" data-original-title="Remove"><i class="icon wb-trash" aria-hidden="true"></i></a>
-          </td>
-        </tr>
+          @if(Auth::user()->id!=$user->id)
+          <tr class="gradeA" id={{$user->id}}>
+            <td class='id' style="visibility:hidden;position:absolute">
+              {{$user->id}}
+            </td>
+            <td class='name'>{{$user->name}}</td>
+            <td class='email'>{{$user->email}}</td>
+            <td class='select-role'>{{$user->role}}</td>
+            <td class="actions">
+              <button type='submit' formaction={{url('user/save')}} class="btn btn-sm btn-icon btn-pure btn-default on-editing save-row"
+                data-toggle="tooltip" data-original-title="Save" hidden><i class="icon wb-check" aria-hidden="true"></i></button>
+              <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-editing cancel-row"
+                data-toggle="tooltip" data-original-title="Delete" hidden><i class="icon wb-close" aria-hidden="true"></i></a>
+              <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row"
+                data-toggle="tooltip" data-original-title="Edit"><i class="icon wb-edit" aria-hidden="true"></i></a>
+              <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row"
+                data-toggle="tooltip" data-original-title="Remove"><i class="icon wb-trash" aria-hidden="true"></i></a>
+            </td>
+          </tr>
+          @endif
         @endforeach
       </tbody>
     </table>

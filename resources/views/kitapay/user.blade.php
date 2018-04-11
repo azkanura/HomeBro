@@ -8,6 +8,7 @@
     <li class="breadcrumb-item active">User Detail</li>
   </ol>
   <div class="page-header-actions">
+
     @if(isset($user->transaction_enable) AND $user->transaction_enable)
     <a class="btn btn btn-danger" href="{{url('kitapay/user/disable-transaction')}}/{{$user->uid}}">
       <i class="icon fa fa-close" aria-hidden="true"></i> Disable Transaction
@@ -119,6 +120,32 @@
       </div>
     </div>
 </div>
+<form method="POST" action="{{route('kitapay.update.status')}}">
+  @csrf
+<div class="row page-profile-v2" style='margin-top:-50px'>
+  <div class="col-lg-4 col-xl-4"></div>
+  <div class="col-lg-2 col-xl-2">
+    <h5>Update KitaSaldo Status</h5>
+  </div>
+  <div class="col-lg-3 col-xl-3">
+      <input type='hidden' value='{{$user->uid}}' name='id'>
+      <select name='status' class='form-control' placeholder='select kitasaldo status'>
+        @if($user->kita_saldo_status!='active')
+        <option value='active'>Active</option>
+        @endif
+        @if($user->kita_saldo_status!='inactive')
+        <option value='inactive'>Inactive</option>
+        @endif
+        @if($user->kita_saldo_status!='disable')
+        <option value='disable'>Disable</option>
+        @endif
+      </select>
+  </div>
+  <div class="col-lg-3 col-xl-3">
+      <button type='submit' class='btn btn-block btn-primary'>Update Status</button>
+  </div>
+</div>
+</form>
 
 @endsection
 @section('style')

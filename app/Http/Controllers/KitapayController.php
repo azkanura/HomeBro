@@ -43,7 +43,7 @@ class KitapayController extends Controller {
     $res = $client->request('POST', $url,['body'=>null]);
     // $data = json_decode($res->getBody()->read(1024));
     // $status = $data->status;
-    return back();
+    return back()->with('success-message','Successfully disabled transaction !');
   }
 
   public function enableTransaction($id){
@@ -52,6 +52,22 @@ class KitapayController extends Controller {
     $res = $client->request('POST', $url,['body'=>null]);
     // $data = json_decode($res->getBody()->read(1024));
     // $status = $data->status;
-    return back();
+    return back()->with('success-message','Successfully enabled transaction !');
+  }
+
+  public function updateKitaSaldoStatus(Request $request){
+    $id=$request->input('id');
+    $status=$request->input('status');
+    $url = BASE_URL.'/user/'.$id.'/update-kita-saldo-status?key='.API_KEY;
+    $client = new Client();
+    $res = $client->request('POST',$url,
+    [
+      'headers' => [
+          'Accept'=> 'application/json',
+          'Content-Type'=> 'application/json'
+      ],
+      'json'=>['kita_saldo_status'=>''.$status.'']
+    ]);
+    return back()->with('success-message','Successfully update kita saldo status !');
   }
 }
