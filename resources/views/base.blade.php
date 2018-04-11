@@ -222,7 +222,7 @@
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Transactions</span>
                 </a>
               </li>
@@ -236,17 +236,17 @@
                 </a>
             <ul class="site-menu-sub">
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/menu-collapsed.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Packages</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Add Package</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Registrations</span>
                 </a>
               </li>
@@ -254,7 +254,7 @@
           </li>
 
           <li class="site-menu-item">
-            <a href="javascript:void(0)">
+            <a href="{{url('/')}}">
                 <i class="site-menu-icon wb-check-circle" aria-hidden="true"></i>
                 <span class="site-menu-title">KitaSaldo</span>
             </a>
@@ -267,17 +267,17 @@
                 </a>
             <ul class="site-menu-sub">
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/menu-collapsed.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Donation Programs</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Add Donation Program</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Donation Transactions</span>
                 </a>
               </li>
@@ -291,17 +291,17 @@
                 </a>
             <ul class="site-menu-sub">
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/menu-collapsed.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Products</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Add Product</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Topup Transactions</span>
                 </a>
               </li>
@@ -315,17 +315,17 @@
                 </a>
             <ul class="site-menu-sub">
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/menu-collapsed.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Products</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Add Product</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Transactions</span>
                 </a>
               </li>
@@ -346,27 +346,27 @@
                 </a>
             <ul class="site-menu-sub">
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/menu-collapsed.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">Kita Saldo</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">KitaPeduli</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">KitaPulsa</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">KitaBayar</span>
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="../layouts/grids.html">
+                <a class="animsition-link" href="{{url('/')}}">
                   <span class="site-menu-title">KitaTransfer</span>
                 </a>
               </li>
