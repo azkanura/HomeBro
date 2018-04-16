@@ -41,7 +41,7 @@
             -
             @endif
           </p>
-          <p class="user-location">Aktif Sejak {{date('d M Y, H:i',$user->register_date)}}</p>
+          <p class="user-location">Aktif Sejak {{date('d M Y, H:i',(int)((int)$user->register_date/1000))}}</p>
           @if(isset($user->transaction_enable) AND $user->transaction_enable)
           <span class='badge badge-rounded badge-outline badge-primary' style='text-transform:uppercase'>Transaction Enabled</span>
           @else
