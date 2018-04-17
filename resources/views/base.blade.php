@@ -93,6 +93,12 @@
         color:#EEEEEE;
         text-decoration: none;
       }
+      .panel-content{
+        border-top:1px solid #efefef;
+      }
+      .panel-content:first-child{
+        border-top:none;
+      }
     </style>
   </head>
   <body class="page-user">
@@ -236,7 +242,7 @@
                 </a>
             <ul class="site-menu-sub">
               <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
+                <a class="animsition-link" href="{{url('kitaumroh/packages')}}">
                   <span class="site-menu-title">Packages</span>
                 </a>
               </li>
@@ -246,7 +252,7 @@
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
+                <a class="animsition-link" href="{{url('/kitaumroh/registrations/1')}}">
                   <span class="site-menu-title">Registrations</span>
                 </a>
               </li>
