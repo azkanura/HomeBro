@@ -4,7 +4,7 @@
   <h3 class="page-title">User Search Result</h3>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{{url('/kitapay/users/1')}}">KitaPay Users</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/kitapay/users/1')}}">Users</a></li>
     <li class="breadcrumb-item active">Search Result : {{$query}}</li>
   </ol>
   <div class="page-header-actions">

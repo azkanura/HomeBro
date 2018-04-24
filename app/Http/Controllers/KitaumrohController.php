@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Hash;
 use GuzzleHttp\Client;
-const BASE_URL = 'https://sandbox.api.kitapay.co.id/admin-panel/v1';
-const API_KEY='AIzaSyDQCF94jFfcS8aP9azi0_K45YsMkiDzX2o';
+const BASE_URL = 'https://bang-tamin.herokuapp.com';
+//const API_KEY='AIzaSyDQCF94jFfcS8aP9azi0_K45YsMkiDzX2o';
 class KitaumrohController extends Controller {
   public function displayRegistrations($page=1){
     $size=50;
@@ -24,7 +24,7 @@ class KitaumrohController extends Controller {
     $registrations = $data->kita_umroh_registrations;
     // dd(json_decode($res->getBody()->read(1024))->registrations);
 
-    return view('kitaumroh.registrations',['registrations'=>$registrations,'status'=>$status,'page'=>$page,'size'=>$size]);
+    return view('kitaumroh.registrations',['registrations'=>$registrations,'status'=>$status]);
   }
 
 

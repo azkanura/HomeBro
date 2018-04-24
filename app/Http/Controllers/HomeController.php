@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()->role=='admin'){
-          return redirect()->route('users');
+          return redirect()->route('dashboard');
         }
         else{
           return redirect()->route('kitapay.users',['page'=>1]);

@@ -8,7 +8,7 @@
     <meta name="description" content="bootstrap admin template">
     <meta name="author" content="">
 
-    <title>KitaPay | Admin Dashboard</title>
+    <title>HomeBro | Admin Dashboard</title>
 
     <link rel="apple-touch-icon" href="{{asset('images/favicon.png')}}">
     <link rel="shortcut icon" href="{{asset('images/favicon.png')}}">
@@ -53,17 +53,20 @@
       Breakpoints();
     </script>
     <style>
-      .site-menu-icon{
+      /* .site-menu-icon{
         font-size:14px;
       }
       .site-menu>.site-menu-item{
         font-size:14px;
-      }
-      .site-menu>.site-menu-item>a{
+      } */
+      /* .site-menu>.site-menu-item>a{
         padding:8px;
-      }
+      } */
       img{
         object-fit: cover !important;
+      }
+      .cover-image{
+        height:200px;
       }
       .avatar img{
         height:100%;
@@ -99,6 +102,7 @@
       .panel-content:first-child{
         border-top:none;
       }
+
     </style>
   </head>
   <body class="page-user">
@@ -106,7 +110,7 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-inverse bg-indigo-600"
+    <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-inverse bg-blue-700"
       role="navigation">
 
       <div class="navbar-header">
@@ -121,8 +125,8 @@
         </button>
         <div class="navbar-brand navbar-brand-center">
           <a href="{{route('home')}}" class='brand-link'>
-          <img class="navbar-brand-logo" src="{{asset('images/logo.png')}}" title="KitaPay">
-          <span class="navbar-brand-text hidden-xs-down"> KitaPay</span>
+          <img class="navbar-brand-logo" src="{{asset('images/logo.png')}}" title="HomeBro">
+          <span class="navbar-brand-text hidden-xs-down"> HomeBro</span>
           </a>
         </div>
         <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-search"
@@ -208,177 +212,44 @@
     </nav>    <div class="site-menubar site-menubar-light">
       <div class="site-menubar-body">
         <ul class="site-menu" data-plugin="menu">
-          @if(Auth::user()->role=='admin')
-          <li class="site-menu-item {{(Request::is('users') ? 'active':'' )}}">
-            <a href="{{url('/users')}}">
+          <li class="site-menu-item {{(Request::is('dashboard') ? 'active':'' )}}">
+            <a href="{{url('/dashboard')}}">
+                <i class="site-menu-icon wb-dashboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="site-menu-item {{(Request::is('message') ? 'active':'' )}}">
+            <a href="{{url('/message')}}">
+                <i class="site-menu-icon wb-chat-group" aria-hidden="true"></i>
+                <span class="site-menu-title">Chats</span>
+            </a>
+          </li>
+          <li class="site-menu-item {{(Request::is('customers*') ? 'active':'' )}}">
+            <a href="{{url('/customers')}}">
                 <i class="site-menu-icon wb-users" aria-hidden="true"></i>
-                <span class="site-menu-title">Users</span>
+                <span class="site-menu-title">Customers</span>
             </a>
           </li>
-          @endif
-          <li class="site-menu-item has-sub {{(Request::is('kitapay/*') ? 'active':'' )}}">
-            <a href="javascript:void(0)">
-                <i class="site-menu-icon wb-payment" aria-hidden="true"></i>
-                <span class="site-menu-title">KitaPay</span>
+          <li class="site-menu-item {{(Request::is('products*') ? 'active':'' )}}">
+            <a href="{{url('/products')}}">
+                <i class="site-menu-icon wb-shopping-cart" aria-hidden="true"></i>
+                <span class="site-menu-title">Products</span>
             </a>
-            <ul class="site-menu-sub">
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/kitapay/users/1')}}">
-                  <span class="site-menu-title">Users</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Transactions</span>
-                </a>
-              </li>
-            </ul>
           </li>
-
-          <li class="site-menu-item has-sub">
-            <a href="javascript:void(0)">
-                    <i class="site-menu-icon wb-globe" aria-hidden="true"></i>
-                    <span class="site-menu-title">KitaUmroh</span>
-                </a>
-            <ul class="site-menu-sub">
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('kitaumroh/packages')}}">
-                  <span class="site-menu-title">Packages</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Add Package</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/kitaumroh/registrations/1')}}">
-                  <span class="site-menu-title">Registrations</span>
-                </a>
-              </li>
-            </ul>
+          <li class="site-menu-item {{(Request::is('promotions*') ? 'active':'' )}}">
+            <a href="{{url('/promotions')}}">
+                <i class="site-menu-icon wb-order" aria-hidden="true"></i>
+                <span class="site-menu-title">Promotions</span>
+            </a>
           </li>
-
-          <li class="site-menu-item">
-            <a href="{{url('/')}}">
-                <i class="site-menu-icon wb-check-circle" aria-hidden="true"></i>
-                <span class="site-menu-title">KitaSaldo</span>
+          <li class="site-menu-item {{(Request::is('vouchers*') ? 'active':'' )}}">
+            <a href="{{url('/vouchers')}}">
+                <i class="site-menu-icon wb-tag" aria-hidden="true"></i>
+                <span class="site-menu-title">Vouchers</span>
             </a>
           </li>
 
-          <li class="site-menu-item has-sub">
-            <a href="javascript:void(0)">
-                    <i class="site-menu-icon wb-heart" aria-hidden="true"></i>
-                    <span class="site-menu-title">KitaPeduli</span>
-                </a>
-            <ul class="site-menu-sub">
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Donation Programs</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Add Donation Program</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Donation Transactions</span>
-                </a>
-              </li>
-            </ul>
-          </li>
 
-          <li class="site-menu-item has-sub">
-            <a href="javascript:void(0)">
-                    <i class="site-menu-icon wb-mobile" aria-hidden="true"></i>
-                    <span class="site-menu-title">KitaPulsa</span>
-                </a>
-            <ul class="site-menu-sub">
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Products</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Add Product</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Topup Transactions</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="site-menu-item has-sub">
-            <a href="javascript:void(0)">
-                    <i class="site-menu-icon wb-shopping-cart" aria-hidden="true"></i>
-                    <span class="site-menu-title">KitaBayar</span>
-                </a>
-            <ul class="site-menu-sub">
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Products</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Add Product</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Transactions</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="site-menu-item">
-            <a href="javascript:void(0)">
-                <i class="site-menu-icon wb-arrow-right" aria-hidden="true"></i>
-                <span class="site-menu-title">KitaTransfer</span>
-            </a>
-          </li>
-          @if(!(Auth::user()->role=='customer_service'))
-          <li class="site-menu-item has-sub">
-            <a href="javascript:void(0)">
-                    <i class="site-menu-icon wb-graph-up" aria-hidden="true"></i>
-                    <span class="site-menu-title">Daily Report</span>
-                </a>
-            <ul class="site-menu-sub">
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">Kita Saldo</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">KitaPeduli</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">KitaPulsa</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">KitaBayar</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="{{url('/')}}">
-                  <span class="site-menu-title">KitaTransfer</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          @endif
         </ul>
       </div>
     </div>
@@ -419,7 +290,7 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-      <div class="site-footer-legal">© 2018 <a href="/">KitaPay</a></div>
+      <div class="site-footer-legal">© 2018 <a href="/">HomeBro</a></div>
       <div class="site-footer-right">
         Crafted by <a href="http://idgw.net">Indonesia GW</a>
       </div>

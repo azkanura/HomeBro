@@ -169,7 +169,7 @@
   (function () {
     var barChart = new Chartist.Bar('.barChart', {
       labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY'],
-      series: [[630, 700, 500, 400, 780], [400, 800, 700, 500, 700]]
+      series: [[630, 700, 500, 400, 780], [400, 600, 250, 300, 700]]
     }, {
       axisX: {
         showGrid: false

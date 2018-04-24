@@ -4,7 +4,7 @@
   <h3 class="page-title">Registration Detail </h3>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{{url('/kitaumroh/registrations/1')}}">KitaPay Registrations</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/kitaumroh/registrations/1')}}">Registrations</a></li>
     <li class="breadcrumb-item active">Registration Detail</li>
   </ol>
   <div class="page-header-actions">

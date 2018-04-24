@@ -1,10 +1,10 @@
 @extends('base')
 @section('header')
 <div class="page-header">
-  <h3 class="page-title">KitaPay Users</h3>
+  <h3 class="page-title">HomeBro Users</h3>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-    <li class="breadcrumb-item active">KitaPay Users</li>
+    <li class="breadcrumb-item active">HomeBro Users</li>
   </ol>
   <div class="page-header-actions">
     <form method='POST' action="{{route('kitapay.search.user')}}">
