@@ -230,25 +230,6 @@
                 <span class="site-menu-title">Customers</span>
             </a>
           </li>
-          <li class="site-menu-item {{(Request::is('products*') ? 'active':'' )}}">
-            <a href="{{url('/products')}}">
-                <i class="site-menu-icon wb-shopping-cart" aria-hidden="true"></i>
-                <span class="site-menu-title">Products</span>
-            </a>
-          </li>
-          <li class="site-menu-item {{(Request::is('promotions*') ? 'active':'' )}}">
-            <a href="{{url('/promotions')}}">
-                <i class="site-menu-icon wb-order" aria-hidden="true"></i>
-                <span class="site-menu-title">Promotions</span>
-            </a>
-          </li>
-          <li class="site-menu-item {{(Request::is('vouchers*') ? 'active':'' )}}">
-            <a href="{{url('/vouchers')}}">
-                <i class="site-menu-icon wb-tag" aria-hidden="true"></i>
-                <span class="site-menu-title">Vouchers</span>
-            </a>
-          </li>
-
 
         </ul>
       </div>

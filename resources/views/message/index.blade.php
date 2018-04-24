@@ -206,7 +206,7 @@
             <div class="chat-content">
               <p>
                 Halo! Perkenalkan saya HomeBro. Saya akan membantu kamu
-                mendapatkan keuntungan dari produk Pertamina. Silakan pilih
+                mendapatkan keuntungan dari produk BTN. Silakan pilih
                 menu di bawah ini untuk melanjutkan.
 
 
@@ -216,7 +216,7 @@
             <div class="chat-content">
               <p>
 
-                Info SPBU - Belanja - Customer Service - Promo - My Account
+                Listing Properti - Ajukan KPR - Customer Service - Promo - My Account
               </p>
 
             </div>
@@ -231,31 +231,12 @@
           <div class="chat-body">
             <div class="chat-content">
               <p>
-                Belanja
+                Ajukan KPR
               </p>
             </div>
           </div>
         </div>
-        <div class="chat">
-          <div class="chat-avatar">
-            <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="">
-              <img src="{{asset('images/logo.png')}}" alt="June Lane">
-            </a>
-          </div>
-          <div class="chat-body">
-            <div class="chat-content">
-              <p>
-              Produk apa yang ingin kamu beli?
-              </p>
-            </div>
-            <div class="chat-content">
-              <p>
-                Bright Gas - Food and Beverages - Oil - Others
-              </p>
-
-            </div>
-          </div>
-        </div>
+        
       </div>
 
     </div>
